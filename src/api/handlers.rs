@@ -109,13 +109,23 @@ pub async fn handle_ws(ws: WebSocket, id: String, clients: Clients) {
         }
     });
     println!("Client connected: {}", id);
-    while let Some(result) = rx.next().await {
-        if let Ok(msg) = result {
-            if msg.is_text() {
-                println!("Message: {}",msg.to_str().unwrap());
-                let _ = chat_tx.send(Ok(Message::text(msg.to_str().unwrap())));
+   while let Some(result) = rx.next().await {
+    if let Ok(msg) = result {
+        if msg.is_text() {
+            let text = msg.to_str().unwrap();
+            println!("Pengirim {}",text);
+
+            // broadcast ke semua client
+            let clients_map = clients.lock().await;
+            for (client_id, client) in clients_map.iter() {
+                if let Some(sender) = &client.sender {
+                    
+                    if client_id != &id {
+                    let _ = sender.send(Ok(Message::text(format!("Pengirim: {}", text))));
+                }}
             }
         }
     }
+}
   
 }

@@ -47,9 +47,9 @@ pub async fn run_server() {
         "Rust WebSocket server running!"
     });
 
-    let routes = register.or(ws_route).or(root).with(warp::cors().allow_any_origin());
-    println!("Server running at http://127.0.0.1:8000");
-    warp::serve(routes).run(([127, 0, 0, 1], 8000)).await;
+    let routes = register.or(ws_route).or(root).or(unregister_all).with(warp::cors().allow_any_origin());
+    println!("Server is running 🏃");
+    warp::serve(routes).run(([0, 0, 0, 0], 8000)).await;
 }
 
 fn with_clients(clients: Clients) -> impl Filter<Extract = (Clients,), Error = Infallible> + Clone {

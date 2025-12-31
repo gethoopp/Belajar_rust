@@ -8,3 +8,5 @@ pub use api::routes::run_server;
 mod basic;
 pub use basic::data_types::tuple::tuple_demo;
 pub use basic::data_types::char::char_demo;
+pub use basic::control_flow::if_expression::if_expression;
+

@@ -1,11 +1,11 @@
 pub fn if_expression() {
     let value = 8;
 
-    if value >= 10 {
-        println!("GOOD RESULT")
-    }else {
-        println!("TRY AGAIN")
-    }
+    // if value >= 10 {
+    //     println!("GOOD RESULT")
+    // }else {
+    //     println!("TRY AGAIN")
+    // }
 
 
     let result: i32 = if value >= 10 {
@@ -14,6 +14,7 @@ pub fn if_expression() {
         9
     } else {
         0
+        
     };
 
     println!("{}", result);

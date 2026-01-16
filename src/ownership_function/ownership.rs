@@ -12,3 +12,17 @@ setiap value harus punya owner atau variabel pemegang nilai dalam satu waktu han
 */
 
 
+
+pub fn contoh_owneship() {
+    let a:String = String::from("Haliim"); 
+
+    {
+       //nilai variabel a masih dapat di konsme di dalam blok ini 
+       println!("{:?}",a);
+       let nilai = 20;
+    }
+   // variabel nilai tidak bisa di konsume disini diakrenakan di luar scope
+    // println!("{}",nilai);
+    
+}
+
